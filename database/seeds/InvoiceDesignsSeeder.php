@@ -29,12 +29,15 @@ class InvoiceDesignsSeeder extends Seeder
                 if ($pdfmake) {
                     $record = InvoiceDesign::whereName($design)->first();
                     if (! $record) {
-                        $record = new InvoiceDesign();
-                        $record->id = $i + 1;
-                        $record->name = $design;
+                        $next_id = DB::table('invoice_designs')->max('id') + 1;
+                        InvoiceDesign::create([
+                            'id' => $next_id,
+                            'name' => $design,
+                        ]);
+                    } else {
+                        $record->pdfmake = json_encode(json_decode($pdfmake)); // remove the white space
+                        $record->save();
                     }
-                    $record->pdfmake = json_encode(json_decode($pdfmake)); // remove the white space
-                    $record->save();
                 }
             }
         }
