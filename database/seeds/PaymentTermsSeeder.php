@@ -12,7 +12,7 @@ class PaymentTermsSeeder extends Seeder
             ['num_days' => -1, 'name' => 'Net 0'],
         ];
 
-        $id_counter = 0;
+        $id_counter = DB::table('payment_terms')->max('id');
         foreach ($paymentTerms as $paymentTerm) {
             if (! DB::table('payment_terms')->where('name', '=', $paymentTerm['name'])->first()) {
                 PaymentTerm::create(array_merge($paymentTerm,['id' => ++$id_counter]));

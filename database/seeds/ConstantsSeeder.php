@@ -11,40 +11,36 @@ class ConstantsSeeder extends Seeder
 {
     public function run()
     {
-        $id_counter = 0;
-        Theme::create(['id' => ++$id_counter, 'name' => 'amelia']);
-        Theme::create(['id' => ++$id_counter, 'name' => 'cerulean']);
-        Theme::create(['id' => ++$id_counter, 'name' => 'cosmo']);
-        Theme::create(['id' => ++$id_counter, 'name' => 'cyborg']);
-        Theme::create(['id' => ++$id_counter, 'name' => 'flatly']);
-        Theme::create(['id' => ++$id_counter, 'name' => 'journal']);
-        Theme::create(['id' => ++$id_counter, 'name' => 'readable']);
-        Theme::create(['id' => ++$id_counter, 'name' => 'simplex']);
-        Theme::create(['id' => ++$id_counter, 'name' => 'slate']);
-        Theme::create(['id' => ++$id_counter, 'name' => 'spacelab']);
-        Theme::create(['id' => ++$id_counter, 'name' => 'united']);
-        Theme::create(['id' => ++$id_counter, 'name' => 'yeti']);
+        Theme::create(['id' => 1, 'name' => 'amelia']);
+        Theme::create(['id' => 2, 'name' => 'cerulean']);
+        Theme::create(['id' => 3, 'name' => 'cosmo']);
+        Theme::create(['id' => 4, 'name' => 'cyborg']);
+        Theme::create(['id' => 5, 'name' => 'flatly']);
+        Theme::create(['id' => 6, 'name' => 'journal']);
+        Theme::create(['id' => 7, 'name' => 'readable']);
+        Theme::create(['id' => 8, 'name' => 'simplex']);
+        Theme::create(['id' => 9, 'name' => 'slate']);
+        Theme::create(['id' => 10, 'name' => 'spacelab']);
+        Theme::create(['id' => 11, 'name' => 'united']);
+        Theme::create(['id' => 12, 'name' => 'yeti']);
 
-        $id_counter = 0;
-        Size::create(['id' => ++$id_counter, 'name' => '1 - 3']);
-        Size::create(['id' => ++$id_counter, 'name' => '4 - 10']);
-        Size::create(['id' => ++$id_counter, 'name' => '11 - 50']);
-        Size::create(['id' => ++$id_counter, 'name' => '51 - 100']);
-        Size::create(['id' => ++$id_counter, 'name' => '101 - 500']);
-        Size::create(['id' => ++$id_counter, 'name' => '500+']);
+        Size::create(['id' => 1, 'name' => '1 - 3']);
+        Size::create(['id' => 2, 'name' => '4 - 10']);
+        Size::create(['id' => 3, 'name' => '11 - 50']);
+        Size::create(['id' => 4, 'name' => '51 - 100']);
+        Size::create(['id' => 5, 'name' => '101 - 500']);
+        Size::create(['id' => 6, 'name' => '500+']);
 
-        $id_counter = 0;
-        PaymentTerm::create(['id' => ++$id_counter, 'num_days' => 7, 'name' => 'Net 7', 'public_id' => 1]);
-        PaymentTerm::create(['id' => ++$id_counter, 'num_days' => 10, 'name' => 'Net 10', 'public_id' => 2]);
-        PaymentTerm::create(['id' => ++$id_counter, 'num_days' => 14, 'name' => 'Net 14', 'public_id' => 3]);
-        PaymentTerm::create(['id' => ++$id_counter, 'num_days' => 15, 'name' => 'Net 15', 'public_id' => 4]);
-        PaymentTerm::create(['id' => ++$id_counter, 'num_days' => 30, 'name' => 'Net 30', 'public_id' => 5]);
-        PaymentTerm::create(['id' => ++$id_counter, 'num_days' => 60, 'name' => 'Net 60', 'public_id' => 6]);
-        PaymentTerm::create(['id' => ++$id_counter, 'num_days' => 90, 'name' => 'Net 90', 'public_id' => 7]);
+        PaymentTerm::create(['id' => 1, 'num_days' => 7, 'name' => 'Net 7', 'public_id' => 1]);
+        PaymentTerm::create(['id' => 2, 'num_days' => 10, 'name' => 'Net 10', 'public_id' => 2]);
+        PaymentTerm::create(['id' => 3, 'num_days' => 14, 'name' => 'Net 14', 'public_id' => 3]);
+        PaymentTerm::create(['id' => 4, 'num_days' => 15, 'name' => 'Net 15', 'public_id' => 4]);
+        PaymentTerm::create(['id' => 5, 'num_days' => 30, 'name' => 'Net 30', 'public_id' => 5]);
+        PaymentTerm::create(['id' => 6, 'num_days' => 60, 'name' => 'Net 60', 'public_id' => 6]);
+        PaymentTerm::create(['id' => 7, 'num_days' => 90, 'name' => 'Net 90', 'public_id' => 7]);
 
-        $id_counter = 0;
-        PaymentLibrary::create(['id' => ++$id_counter, 'name' => 'Omnipay']);
-        PaymentLibrary::create(['id' => ++$id_counter, 'name' => 'PHP-Payments [Deprecated]']);
+        PaymentLibrary::create(['id' => 1, 'name' => 'Omnipay']);
+        PaymentLibrary::create(['id' => 2, 'name' => 'PHP-Payments [Deprecated]']);
 
         /*
         d, dd: Numeric date, no leading zero and leading zero, respectively. Eg, 5, 05.
