@@ -43,6 +43,7 @@ class PaymentTypesSeeder extends Seeder
             ['name' => 'Bitcoin', 'gateway_type_id' => GATEWAY_TYPE_BITCOIN],
         ];
 
+        $id_counter = 0;
         foreach ($paymentTypes as $paymentType) {
             $record = PaymentType::where('name', '=', $paymentType['name'])->first();
 
@@ -52,7 +53,7 @@ class PaymentTypesSeeder extends Seeder
 
                 $record->save();
             } else {
-                PaymentType::create($paymentType);
+                PaymentType::create(array_merge($paymentType,['id' => ++$id_counter]));
             }
         }
     }

@@ -244,9 +244,10 @@ class FontsSeeder extends Seeder
             ],
         ];
 
+        $id_counter = 0;
         foreach ($fonts as $font) {
             if (! DB::table('fonts')->where('name', '=', $font['name'])->count()) {
-                Font::create($font);
+                Font::create(array_merge($font,['id' => ++$id_counter]));
             }
         }
     }

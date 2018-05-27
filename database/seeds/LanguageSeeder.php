@@ -40,13 +40,14 @@ class LanguageSeeder extends Seeder
             ['name' => 'Thai', 'locale' => 'th'],
         ];
 
+        $id_counter = 0;
         foreach ($languages as $language) {
             $record = Language::whereLocale($language['locale'])->first();
             if ($record) {
                 $record->name = $language['name'];
                 $record->save();
             } else {
-                Language::create($language);
+                Language::create(array_merge($language,['id' => ++$id_counter]));
             }
         }
 

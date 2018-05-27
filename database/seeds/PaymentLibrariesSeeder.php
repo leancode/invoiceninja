@@ -79,6 +79,7 @@ class PaymentLibrariesSeeder extends Seeder
             ['name' => 'Custom', 'provider' => 'Custom3', 'is_offsite' => true, 'sort_order' => 22],
         ];
 
+        $id_counter = 0;
         foreach ($gateways as $gateway) {
             $record = Gateway::whereName($gateway['name'])
                         ->whereProvider($gateway['provider'])
@@ -87,7 +88,7 @@ class PaymentLibrariesSeeder extends Seeder
                 $record->fill($gateway);
                 $record->save();
             } else {
-                Gateway::create($gateway);
+                Gateway::create(array_merge($gateway,['id' => ++$id_counter]));
             }
         }
     }

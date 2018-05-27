@@ -23,14 +23,14 @@ class GatewayTypesSeeder extends Seeder
             ['alias' => 'custom2', 'name' => 'Custom'],
             ['alias' => 'custom3', 'name' => 'Custom'],
         ];
-
+        $id_counter = 0;
         foreach ($gateway_types as $gateway_type) {
             $record = GatewayType::where('alias', '=', $gateway_type['alias'])->first();
             if ($record) {
                 $record->fill($gateway_type);
                 $record->save();
             } else {
-                GatewayType::create($gateway_type);
+                GatewayType::create(array_merge($gateway_type, ['id' => ++$id_counter]));
             }
         }
     }

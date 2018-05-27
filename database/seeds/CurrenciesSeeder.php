@@ -86,7 +86,7 @@ class CurrenciesSeeder extends Seeder
             ['name' => 'Qatari Riyal', 'code' => 'QAR', 'symbol' => 'QR', 'precision' => '2', 'thousand_separator' => ',', 'decimal_separator' => '.'],
             ['name' => 'Honduran Lempira', 'code' => 'HNL', 'symbol' => 'L', 'precision' => '2', 'thousand_separator' => ',', 'decimal_separator' => '.'],
         ];
-
+        $id_counter = 0;
         foreach ($currencies as $currency) {
             $record = Currency::whereCode($currency['code'])->first();
             if ($record) {
@@ -99,8 +99,8 @@ class CurrenciesSeeder extends Seeder
                     $record->swap_currency_symbol = $currency['swap_currency_symbol'];
                 }
                 $record->save();
-            } else {
-                Currency::create($currency);
+            } else {                
+                Currency::create(array_merge($currency,['id' => ++$id_counter]));
             }
         }
     }

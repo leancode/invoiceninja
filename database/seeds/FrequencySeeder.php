@@ -21,13 +21,14 @@ class FrequencySeeder extends Seeder
             ['name' => 'Two years', 'date_interval' => '2 years'],
         ];
 
+        $id_counter = 0;
         foreach ($frequencies as $frequency) {
             $record = Frequency::whereName($frequency['name'])->first();
             if ($record) {
                 $record->date_interval = $frequency['date_interval'];
                 $record->save();
             } else {
-                Frequency::create($frequency);
+                Frequency::create(array_merge($frequency,['id' => ++$id_counter]));
             }
         }
     }

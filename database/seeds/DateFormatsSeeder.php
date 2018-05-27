@@ -25,7 +25,7 @@ class DateFormatsSeeder extends Seeder
             ['format' => 'j. M. Y', 'picker_format' => 'd. M. yyyy', 'format_moment' => 'DD. MMM. YYYY'],
             ['format' => 'j. F Y', 'picker_format' => 'd. MM yyyy', 'format_moment' => 'DD. MMMM YYYY'],
         ];
-
+        $id_counter = 0;
         foreach ($formats as $format) {
             // use binary to support case-sensitive search
             $record = DateFormat::whereRaw('BINARY `format`= ?', [$format['format']])->first();
@@ -34,7 +34,7 @@ class DateFormatsSeeder extends Seeder
                 $record->format_moment = $format['format_moment'];
                 $record->save();
             } else {
-                DateFormat::create($format);
+                DateFormat::create(array_merge($format,['id' => ++$id_counter]));
             }
         }
 
@@ -55,13 +55,14 @@ class DateFormatsSeeder extends Seeder
             ['format' => 'j. F Y g:i a', 'format_moment' => 'DD. MMMM YYYY h:mm:ss a'],
         ];
 
+        $id_counter = 0;
         foreach ($formats as $format) {
             $record = DatetimeFormat::whereRaw('BINARY `format`= ?', [$format['format']])->first();
             if ($record) {
                 $record->format_moment = $format['format_moment'];
                 $record->save();
             } else {
-                DatetimeFormat::create($format);
+                DatetimeFormat::create(array_merge($format,['id' => ++$id_counter]));
             }
         }
     }

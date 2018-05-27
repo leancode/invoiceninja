@@ -44,10 +44,11 @@ class IndustrySeeder extends Seeder
             ['name' => 'Restaurant & Catering'],
         ];
 
+        $id_counter = 0;
         foreach ($industries as $industry) {
             $record = Industry::whereName($industry['name'])->first();
             if (! $record) {
-                Industry::create($industry);
+                Industry::create(array_merge($industry,['id' => ++$id_counter]));
             }
         }
 
