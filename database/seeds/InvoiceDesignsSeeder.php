@@ -29,7 +29,12 @@ class InvoiceDesignsSeeder extends Seeder
                 if ($pdfmake) {
                     $record = InvoiceDesign::whereName($design)->first();
                     if (! $record) {
-                        $next_id = DB::table('invoice_designs')->max('id') + 1;
+                        $max_id = DB::table('invoice_designs')->max('id');
+                        if (! $max_id) {
+                            $next_id = $max_id + 1;
+                        } else {
+                            $next_id = 1;                            
+                        }
                         InvoiceDesign::create([
                             'id' => $next_id,
                             'name' => $design,
